@@ -125,6 +125,7 @@ def scrape():
         downloads = soup.find('div', class_='downloads')
         img = downloads.find('a')['href']
         mars_hemispheres.append({'title': title, 'img_url': img})
+			
 
     # Add hemisphere data to dictionary list
     mars_data.append({'title': title, 'url': img_url})

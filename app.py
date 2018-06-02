@@ -32,7 +32,7 @@ def scrape():
     
     # Store results into a dictionary
     mars = mongo.db.mars 
-    mars_data = scrape_mars.scrape
+    mars_data = data.scrape()
     
     # Insert Mars data into database
     mars.update({}, mars_data, upsert=True)
