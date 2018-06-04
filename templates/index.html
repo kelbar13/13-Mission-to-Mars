@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="col-md-12 text-center">
+		<div class = "jumbotron">
+			<h1 align='center'>Mission to Mars</h1>
+	<p><a class = "btn btn-primary btn-lg" href="/scrape" role = "button">Scrape New Data</a></p>
+		</div>
+	</div>
+	<div class = "container">
+		<div class = "row">
+			<div class = "col-md-8">
+				<h2>{{mars_data.headline}}</h2>
+				<p>{{mars_data.article}}</p>
+				<h2>Featured Mars Image</h2>
+				<img src = {{mars_data.featured_image}} width = "400" height = "400">
+			</div>
+			<div class = "col-md-2"></div>
+				<h2>Mars Weather</h2>
+				<p>{{mars_data.mars_weather}}</p>
+				<div class = "panel panel default">
+					<div class = "panel-body">
+						<h4>Mars Facts Table</h4>
+						<hr>
+						{{mars_data.facts_table | safe}}
+					</div>
+				</div>
+		<div class = "row">
+			<div class = "col-md-12">
+				<div class = "row">
+					<div class = "col-md-6">
+					<img src = {{mars_data.cerberus}} width = "400" height = "400">
+					<img src = {{mars_data.schiaparelli}} width = "400" height = "400">
+				</div>
+				<div class = "col-md-6">
+					<img src = {{mars_data.syrtis_major}} width = "400" height = "400">
+					<img src = {{mars_data.valles_marineris}} width = "400" height = "400">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

@@ -9,7 +9,7 @@ from selenium import webdriver
 # Create function called 'scrape' to execute all scraping code from mission_to_mars.ipynb
 def scrape():
     
-    # Create a list to hold scraped data
+    # Create a dictionary to hold scraped data
     mars_data = []
     
     ### NASA Mars News ###
@@ -26,7 +26,7 @@ def scrape():
     
     # Parse html with BeautifulSoup
     soup = bs(html, 'html.parser')
-    results = soup.find_all('li', class_='slide')
+    # results = soup.find_all('li', class_='slide')
     news_title = soup.find('div', class_='content_title')
     news_p = soup.find('div', class_='article_teaser_body')
     
@@ -57,7 +57,7 @@ def scrape():
     featured_image = featured_image_base_url + featured_image_soup.find(id='full_image')['data-fancybox-href']
     
     # Add the image data to list
-    mars_data.append({'title': 'Featured Mars Image', 'image_url': featured_image_url})
+    mars_data.append({'title': 'Featured Mars Image', 'image_url': featured_image})
     
     # Exit browser session
     browser.quit()
@@ -118,7 +118,7 @@ def scrape():
         title = hemisphere.find('h3').text
         title = title.replace('Enhanced', '')
         img_url = hemisphere.find('a')['href']
-        link_url = 'https://astrogeology.usgs.gov' + img_url    
+        link_url = img_base_url + img_url    
         browser.visit(link_url)
         html = browser.html
         soup = bs(html, 'html.parser')
@@ -136,7 +136,7 @@ def scrape():
     for item in mars_data:
         for key, value in item.items():
             print(key, ': ', value)
-            print()
+            print() 
 
     return(mars_data)
     
